@@ -5,6 +5,7 @@ import tornado.ioloop
 class MainHandler(tornado.web.RequestHandler):
     "Handler for the root page"
 
+    @tornado.web.asynchronous
     def get(self):
         "Respond to a GET request"
         print("START {} handling {}".format(self.__class__.__name__, self._request_summary()))
