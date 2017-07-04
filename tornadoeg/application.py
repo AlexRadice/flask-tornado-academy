@@ -7,10 +7,11 @@ class MainHandler(tornado.web.RequestHandler):
 
     def get(self):
         "Respond to a GET request"
-        print("{} handling {}".format(self.__class__.__name__, self._request_summary()))
+        print("START {} handling {}".format(self.__class__.__name__, self._request_summary()))
         self.write("<html><body><h1>This is the Home Page!</h1>" + 
             "<footer>Served at {}</footer>".format(datetime.now()) +
             "</body></html>")
+        print("FINISH {} handling {}".format(self.__class__.__name__, self._request_summary()))
 
 
 application = tornado.web.Application([
