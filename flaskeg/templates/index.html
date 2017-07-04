@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+<head>
+    {% assets "css" %}
+       <link type="text/css" href="{{ ASSET_URL }}" rel="stylesheet" media="all" />
+    {% endassets %}
+</head>
 <body>
     <h2 style="float:right">
         {% if current_user.is_authenticated %}

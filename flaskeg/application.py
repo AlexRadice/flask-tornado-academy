@@ -5,6 +5,7 @@ from flaskeg.login import LoginController
 from flask import Flask, render_template, session
 from flask_login import LoginManager, current_user
 from flask_principal import Principal
+from flask_assets import Environment, Bundle
 
 app = Flask('flaskeg')
 app.secret_key = "really_secret_key"
@@ -54,6 +55,15 @@ def is_cellA(cell):
 app.jinja_env.globals['get_version'] = get_version
 app.jinja_env.filters['polite'] = polite
 app.jinja_env.tests['is_cellA'] = is_cellA
+
+
+# assets
+environment = Environment(app)
+environment.url_expire = True
+environment.register('css', Bundle('css/styles.css', 
+                                    filters="cssrewrite,cssmin",
+                                    output="css/gen/core.css")
+                    )
 
 
 if __name__ == '__main__':

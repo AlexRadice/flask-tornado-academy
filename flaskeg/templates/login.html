@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+<head>
+    {% assets "css" %}
+       <link type="text/css" href="{{ ASSET_URL }}" rel="stylesheet" media="all" />
+    {% endassets %}
+</head>
 <body>
     <form method="post" action="{{ url_for('login') }}">
         <h1>Login:</h1>
