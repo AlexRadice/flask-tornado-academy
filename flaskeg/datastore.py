@@ -29,9 +29,9 @@ def save_developer(developer):
 
 def new_developer():
     "Get a blank object for a new developer"
-    return {'name': None,
-        'cell': None,
-        'favouritefruit': None}
+    return {'name': '',
+        'cell': '',
+        'favouritefruit': ''}
 
 
 def get_user(mail):
