@@ -1,6 +1,7 @@
-from flask.views import MethodView
-from datastore import get_developer, save_developer, new_developer
+from flaskeg.datastore import get_developer, save_developer, new_developer
+from flaskeg.authentication import EDIT_USER_PERMISSION
 from flask import render_template, request, redirect
+from flask.views import MethodView
 
 class DeveloperDetailsController(MethodView):
     "Developer Details Controller"
@@ -16,6 +17,7 @@ class DeveloperDetailsController(MethodView):
         return render_template('developer.html', developer=developer)
 
 
+    @EDIT_USER_PERMISSION.require()
     def post(self):
         "Response to POST request by saving the details passed"
         print("Saving {}".format(request.form))

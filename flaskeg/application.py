@@ -1,9 +1,9 @@
 from flaskeg.datastore import get_all, get_user
 from flaskeg.developerdetailscontroller import DeveloperDetailsController
-from flaskeg.authentication import FlaskLoginUser
+from flaskeg.authentication import FlaskLoginUser, load_identity, save_identity
 from flaskeg.login import LoginController
-from flask import Flask, render_template
-from flask_login import LoginManager
+from flask import Flask, render_template, session
+from flask_login import LoginManager, current_user
 from flask_principal import Principal
 
 app = Flask('flaskeg')
@@ -17,6 +17,9 @@ def load_user(user_id):
     "Load user"
     user = get_user(user_id)
     return FlaskLoginUser(user)
+
+principals.identity_loader(load_identity)
+principals.identity_saver(save_identity)
 
 @app.route('/')
 def index():

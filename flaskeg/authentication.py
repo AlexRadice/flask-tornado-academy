@@ -1,4 +1,25 @@
-from flask_login import UserMixin
+from flask_login import UserMixin, current_user
+from flask_principal import Permission, RoleNeed
+
+_identities = {}
+
+EDIT_USER_ROLE = RoleNeed('EditUser')
+EDIT_USER_PERMISSION = Permission("Edit User", EDIT_USER_ROLE)
+
+
+def load_identity():
+    "Load identity"
+    if current_user.is_authenticated:
+        return _identities.get(current_user.get_id())
+    else:
+        return None
+
+
+def save_identity(identity):
+    "Save identity"
+    _identities[identity.id] = identity
+
+
 
 class FlaskLoginUser(UserMixin):
     "Class representing a Flask user"
