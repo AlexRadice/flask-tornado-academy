@@ -6,11 +6,18 @@
         <tr><th>Name</th><th>Cell</th></tr>
         {% if developers %}
             {% for developer in developers %}
-            <tr><td>{{developer['name']}}</td><td>{{developer['cell']}}</td></tr>
+            <tr>
+                <td><a href="{{ url_for('developer', name=developer['name']) }}">{{developer['name']}}</a></td>
+                <td>{{developer['cell']}}</td>
+            </tr>
             {% endfor %}
         {% else %}
         <tr colspan="2">No developers</tr>
         {% endif %}
     </table>
+
+    <form method="get" action="{{ url_for('developer') }}">
+        <input type="submit" name="Add New" value="Add New">
+    </form>
 </body>
 </html>

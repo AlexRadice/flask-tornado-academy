@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <form method="post" action="{{ url_for('developer', name=developer['name']) }}">
+        <h1>Developer Details:</h1>
+        <div><label for="name">Name</label></div>
+        <div><input type="text" id="name" name="name" value="{{developer['name']}}"></div>
+        <div><label for="cell">Cell</label></div>
+        <div><input type="text" id="cell" name="cell" value="{{developer['cell']}}"></div>
+        <div><label for="favouritefruit">Favourite Fruit</label></div>
+        <div><input type="text" id="favouritefruit" name="favouritefruit" value="{{developer['favouritefruit']}}"></div>
+        <div><input type="submit" name="Save" value="Save">&nbsp;<input type="submit" name="Cancel" value="Cancel"></div>
+    </form>
+</body>
+</html>
