@@ -7,15 +7,16 @@ import tornado.gen
 class MainHandler(tornado.web.RequestHandler):
     "Handler for the root page"
 
+    def initialize(self, datastore):
+        "Initialise the request handler (called before each request)"
+        self._datastore = datastore
+
     @tornado.gen.coroutine
     def get(self):
         "Respond to a GET request"
         print("START {} handling {}".format(self.__class__.__name__, self._request_summary()))
-        http_client = tornado.httpclient.AsyncHTTPClient()
 
-        print("START Backend fetches ....")
-        response1, response2  = yield [http_client.fetch('http://www.google.com'),  http_client.fetch('http://search.yahoo.com')]
-        print("FINISH Backend fetches response statuses={},{}".format(response1.code, response2.code))
+        response1, response2  = yield [self._datastore.get_google(), self._datastore.get_yahoo()]
 
         if response1.error:
             response_text = "Error {} from backend".format(response1.error)
