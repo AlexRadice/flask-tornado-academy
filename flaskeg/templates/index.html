@@ -4,7 +4,13 @@
     <h1>List of Developers</h1>
     <table>
         <tr><th>Name</th><th>Cell</th></tr>
+        {% if developers %}
+            {% for developer in developers %}
+            <tr><td>{{developer['name']}}</td><td>{{developer['cell']}}</td></tr>
+            {% endfor %}
+        {% else %}
         <tr colspan="2">No developers</tr>
+        {% endif %}
     </table>
 </body>
 </html>
