@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <form method="post" action="{{ url_for('login') }}">
+        <h1>Login:</h1>
+        <div><label for="mail">Email Address</label></div>
+        <div><input type="text" id="mail" name="mail" value=""></div>
+        <div><label for="password">Password</label></div>
+        <div><input type="password" id="password" name="password" value=""></div>
+        <div><input type="submit" name="Login" value="Login">&nbsp;<input type="submit" name="Cancel" value="Cancel"></div>
+    </form>
+</body>
+</html>

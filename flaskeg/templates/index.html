@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
 <body>
+    <h2 style="float:right">
+        {% if current_user.is_authenticated %}
+            Hello {{ current_user.get_name() }}
+        {% else %}
+            <a href="{{ url_for('login') }}">Login</a>
+        {% endif %}
+    </h2>
     <h1>List of Developers</h1>
     <table>
         <tr><th>Name</th><th>Cell</th></tr>

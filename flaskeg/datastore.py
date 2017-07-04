@@ -6,6 +6,12 @@ _developers = {'Alex Radice': {
     'favouritefruit': 'grapefruit'
 }}
 
+_users = {'billy.bob@inter.net': {
+        'name': 'Billy Bob',
+        'mail': 'billy.bob@inter.net'
+    }}
+
+
 def get_all():
     "Get all developers"
     return _developers.values()
@@ -26,3 +32,9 @@ def new_developer():
     return {'name': None,
         'cell': None,
         'favouritefruit': None}
+
+
+def get_user(mail):
+    "Get user by email address"
+    return _users.get(mail)
+
