@@ -16,7 +16,7 @@ class MainHandler(tornado.web.RequestHandler):
         "Respond to a GET request"
         print("START {} handling {}".format(self.__class__.__name__, self._request_summary()))
 
-        response1, response2  = yield [self._datastore.get_google(), self._datastore.get_yahoo()]
+        response1, response2  = yield [tornado.gen.Task(self._datastore.get_google), self._datastore.get_yahoo()]
 
         if response1.error:
             response_text = "Error {} from backend".format(response1.error)
